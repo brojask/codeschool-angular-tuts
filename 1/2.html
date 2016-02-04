@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="store">
+    <head>
+        <meta charset="UTF-8">
+        <title>2</title>              
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">        
+    </head>
+    <body ng-controller="StoreController as store"> 
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="product in store.products">
+                <!-- <li class="list-group-item" ng-repeat="product in store.products | limitTo:3 "> -->
+                <!-- <li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price' "> -->
+                <h3>
+                    {{product.name}}
+                    <em class="pull-right">{{product.price|currency}}</em>                    
+                </h3>  
+                <img ng-src="{{product.images[0]}}" class="text-center">
+                <section ng-init="tab = 1">
+                    <ul class="nav nav-pills">
+                        <li ng-class="{active:tab === 1}"><a href="#" ng-click="tab = 1">Description</a></li>
+                        <li ng-class="{active:tab === 2}"><a href="#" ng-click="tab = 2">Specifications</a></li>
+                        <li ng-class="{active:tab === 3}"><a href="#" ng-click="tab = 3">Reviews</a></li>
+                    </ul>
+                </section>
+                <div class="panel" ng-show="tab === 1">
+                    <h4>Description</h4>                    
+                    <p>{{product.description}}</p>
+                </div>
+                <div class="panel" ng-show="tab === 2">
+                    <h4>Specifications</h4>
+                    <p>{{product.description}}</p>
+                </div>
+                <div class="panel" ng-show="tab === 3">
+                    <h4>Reviews</h4>
+                    <p>{{product.description}}</p>
+                </div>                  
+            </li>
+        </ul>                      
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>        
+        <script>
+                        (function() {
+                            var app = angular.module('store', []);
+                            app.controller('StoreController', function() {
+                                this.products = gem;                                
+                            });
+
+                            var gem = [
+  {
+    "name": "Azurite",
+    "description": "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
+    "shine": 8,
+    "price": 110.50,
+    "rarity": 7,
+    "color": "#CCC",
+    "faces": 14,
+    "images": [
+      "images/gem-02.gif",
+      "images/gem-05.gif",
+      "images/gem-09.gif"
+    ],
+    "reviews": []
+  },
+  {
+    "name": "Bloodstone",
+    "description": "Origin of the Bloodstone is unknown, hence its low value. It has a very high shine and 12 sides, however.",
+    "shine": 9,
+    "price": 22.90,
+    "rarity": 6,
+    "color": "#EEE",
+    "faces": 12,
+    "images": [
+      "images/gem-01.gif",
+      "images/gem-03.gif",
+      "images/gem-04.gif"
+    ],
+    "reviews": []
+  },
+  {
+    "name": "Zircon",
+    "description": "Zircon is our most coveted and sought after gem. You will pay much to be the proud owner of this gorgeous and high shine gem.",
+    "shine": 70,
+    "price": 1100,
+    "rarity": 2,
+    "color": "#000",
+    "faces": 6,
+    "images": [
+      "images/gem-06.gif",
+      "images/gem-07.gif",
+      "images/gem-08.gif"
+    ],
+    "reviews": []
+  }
+]
+
+                        })();
+        </script>
+    </body>
+</html>

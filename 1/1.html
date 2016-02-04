@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="store">
+    <head>
+        <meta charset="UTF-8">
+        <title>1</title>              
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">        
+    </head>
+    <body class="container" ng-controller="StoreController
+            as store">   
+        <div class="row product" ng-repeat="product in store.products">
+            <h1>{{product.name}}</h1>
+            <h2>{{product.price}}</h2>
+            <p>{{product.description}}</p>
+            <button ng-show="product.canPurchase" class="btn btn-primary">Add  to cart </button>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>        
+        <script>
+                    (function() {
+                        var app = angular.module('store', []);
+                        app.controller('StoreController', function() {
+                            this.products = gem;
+                        });
+
+                        var gem = [{
+                        name: 'Dodecahedron',
+                                price: 2.95,
+                                description: '. . .',
+                                canPurchase: true,
+                                soldOut: false
+                        }, {
+                        	name: 'Pentagonal Gem',
+                                price: 5.95,
+                                description: '. . .',
+                                canPurchase: false,
+                                soldOut: false
+                        }]
+                    })();
+        </script>
+    </body>
+</html>
